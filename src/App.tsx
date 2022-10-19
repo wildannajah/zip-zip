@@ -1,10 +1,10 @@
-import Home from './pages/Home';
+import Router from './routes';
 import ThemeProvider from './theme';
 
 function App() {
   return (
     <ThemeProvider>
-      <Home />
+      <Router />
     </ThemeProvider>
   );
 }

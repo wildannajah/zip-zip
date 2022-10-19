@@ -1,6 +1,6 @@
 import { Stack, styled, Typography } from '@mui/material';
 import Page from '../components/Page';
-import Logo from '../sections/home/Logo';
+import Logo from '../components/Logo';
 import SearchForm from '../sections/home/SearchForm';
 
 const RootStyle = styled('div')({

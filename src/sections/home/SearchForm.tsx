@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 // @mui
 import { Alert, IconButton, InputAdornment } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 import { FormProvider, RHFTextField } from '../../components/hook-form';
 import Iconify from '../../components/Iconify';
 import useIsMountedRef from '../../hooks/useIsMountedRef';
@@ -18,6 +19,9 @@ type FormValuesProps = {
 export default function LoginForm() {
   const isMobile = useResponsive('down', 'sm');
   const isMountedRef = useIsMountedRef();
+  const { pathname } = useLocation();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const isHome = pathname === '/';
 
   const LoginSchema = Yup.object().shape({
     search: Yup.string().required('Search field is required'),
@@ -72,6 +76,8 @@ export default function LoginForm() {
             </InputAdornment>
           ),
         }}
+        size={isHome ? 'medium' : 'small'}
+        isHome={isHome}
         sx={{ width: isMobile ? '300px' : '600px' }}
       />
     </FormProvider>

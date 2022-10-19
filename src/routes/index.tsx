@@ -2,6 +2,7 @@ import { ElementType, lazy, Suspense } from 'react';
 import { useRoutes } from 'react-router-dom';
 import LoadingScreen from '../components/LoadingScreen';
 import MainLayout from '../layouts/main';
+import ProductLayout from '../pages/Product';
 
 const Loadable = (Component: ElementType) =>
   // eslint-disable-next-line func-names
@@ -34,8 +35,18 @@ export default function Router() {
         },
       ],
     },
+    {
+      path: 'product',
+      element: <ProductLayout />,
+      children: [
+        { element: <ProductPage />, index: true },
+        // { path: 'new', element: <Chat /> },
+        // { path: ':conversationKey', element: <Chat /> },
+      ],
+    },
   ]);
 }
 
 // MAIN
 const HomePage = Loadable(lazy(() => import('../pages/Home')));
+const ProductPage = Loadable(lazy(() => import('../pages/Product')));
