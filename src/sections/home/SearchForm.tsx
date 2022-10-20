@@ -67,18 +67,30 @@ export default function LoginForm() {
         name="search"
         placeholder="Cari Barangmu disini"
         type="text"
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <IconButton edge="start">
-                <Iconify icon="bx:search" />
-              </IconButton>
-            </InputAdornment>
-          ),
-        }}
+        fullWidth
+        InputProps={
+          !isMobile
+            ? {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <IconButton edge="start">
+                      <Iconify icon="bx:search" />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }
+            : {
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton edge="end">
+                      <Iconify icon="bx:search" />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }
+        }
         size={isHome ? 'medium' : 'small'}
         isHome={isHome}
-        sx={{ width: isMobile ? '300px' : '600px' }}
       />
     </FormProvider>
   );
