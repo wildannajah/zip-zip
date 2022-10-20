@@ -8,15 +8,16 @@ export default function ProductCardLoader() {
       <Card>
         <CardMedia>
           <Skeleton
+            animation="wave"
             variant="rectangular"
             width="100%"
             height={isMobile ? 150 : 250}
           />
         </CardMedia>
         <CardContent>
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
+          <Skeleton animation="wave" />
+          <Skeleton animation="wave" />
+          <Skeleton animation="wave" />
         </CardContent>
       </Card>
     </Grid>
