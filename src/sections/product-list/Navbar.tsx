@@ -1,4 +1,5 @@
 import { Box, Container, Divider, Stack, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import Iconify from '../../components/Iconify';
 import Logo from '../../components/Logo';
 import useResponsive from '../../hooks/useResponsive';
@@ -6,6 +7,7 @@ import SearchForm from '../home/SearchForm';
 
 export default function Navbar() {
   const isMobile = useResponsive('down', 'sm');
+  const navigate = useNavigate();
   return (
     <Box
       display="block"
@@ -86,7 +88,11 @@ export default function Navbar() {
               display="flex"
               alignItems="center"
             >
-              <Iconify icon="ep:back" fontSize="28px" />
+              <Iconify
+                icon="ep:back"
+                fontSize="28px"
+                onClick={() => navigate(-1)}
+              />
               <SearchForm />
             </Stack>
           ) : (

@@ -22,6 +22,9 @@ export default function RHFTextField({
     fieldset {
       border-radius: 50px;
     }
+    .MuiInputBase-input {
+      border-radius: 50px !important;
+    }
   `;
 
   const CustomTextField = styled(TextField)`

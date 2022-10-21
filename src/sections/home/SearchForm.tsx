@@ -75,7 +75,7 @@ export default function LoginForm() {
             ? {
                 startAdornment: (
                   <InputAdornment position="start">
-                    <IconButton edge="start">
+                    <IconButton edge="start" type="submit">
                       <Iconify icon="bx:search" />
                     </IconButton>
                   </InputAdornment>
@@ -84,7 +84,7 @@ export default function LoginForm() {
             : {
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton edge="end">
+                    <IconButton edge="end" type="submit">
                       <Iconify icon="bx:search" />
                     </IconButton>
                   </InputAdornment>
