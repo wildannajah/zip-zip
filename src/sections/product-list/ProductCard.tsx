@@ -4,27 +4,51 @@ import {
   CardContent,
   CardMedia,
   Grid,
+  Link,
   Stack,
   Typography,
 } from '@mui/material';
 import Iconify from '../../components/Iconify';
 import useResponsive from '../../hooks/useResponsive';
 
-export default function ProductCard() {
+interface ProductProps {
+  image: string;
+  name: string;
+  price: string;
+  link: string;
+  source: string;
+}
+
+export default function ProductCard({
+  image,
+  name,
+  price,
+  link,
+  source,
+}: ProductProps) {
   const srcImg = '../assets/images/shopee.svg';
   const isMobile = useResponsive('down', 'sm');
+  console.log(link, source);
+
   return (
     <Grid item xs={6} md={3}>
-      <Card>
+      <Card
+        sx={{
+          boxShadow:
+            '0px 1px 2px rgba(0, 0, 0, 0.05), 0px 0px 0px rgba(0, 0, 0, 0.05);',
+        }}
+      >
         <CardMedia
           component="img"
           height={isMobile ? '150' : '250'}
-          image="https://bandung.transstudiomall.com/asset/tenant/201912191024540000004.jpg"
+          image={image}
           alt="green iguana"
         />
         <CardContent>
           <Stack spacing={1}>
-            <Typography variant="subtitle1">Converse 70s</Typography>
+            <Typography variant="subtitle1">
+              {`${name.slice(0, 20)}...`}
+            </Typography>
             <Stack
               direction="row"
               display="flex"
@@ -46,7 +70,7 @@ export default function ProductCard() {
                     color="#E74C2D"
                     fontSize={isMobile ? '11px' : ''}
                   >
-                    Shopee
+                    {source}
                   </Typography>
                 </Stack>
               </div>
@@ -93,9 +117,15 @@ export default function ProductCard() {
               justifyContent="space-between"
             >
               <Typography variant="subtitle1" fontSize={isMobile ? '10px' : ''}>
-                Rp. 750.000,-
+                {`${Intl.NumberFormat('id-ID', {
+                  style: 'currency',
+                  currency: 'IDR',
+                  minimumFractionDigits: 0,
+                }).format(parseInt(price, 10))},-`}
               </Typography>
               <Button
+                variant="contained"
+                color="error"
                 sx={{
                   backgroundColor: '#C2224C',
                   color: '#fff',
@@ -104,12 +134,22 @@ export default function ProductCard() {
                 }}
                 size="small"
               >
-                <Typography
-                  variant="subtitle2"
-                  fontSize={isMobile ? '7px' : ''}
+                <Link
+                  href={link}
+                  style={{ textDecoration: 'none' }}
+                  color="#fff"
+                  target="_blank"
                 >
-                  Lihat Produk
-                </Typography>
+                  <Typography
+                    variant="subtitle2"
+                    fontSize={isMobile ? '7px' : ''}
+                    sx={{
+                      textDecoration: 'none !important',
+                    }}
+                  >
+                    Lihat Produk
+                  </Typography>
+                </Link>
               </Button>
             </Stack>
           </Stack>

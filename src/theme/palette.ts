@@ -177,7 +177,7 @@ const palette = {
     text: { primary: GREY[800], secondary: GREY[600], disabled: GREY[500] },
     background: {
       paper: '#fff',
-      default: '#fff',
+      default: '#EEE',
       neutral: GREY[200],
       secondary: '#222',
     },
