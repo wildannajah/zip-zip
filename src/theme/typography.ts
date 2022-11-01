@@ -2,7 +2,7 @@ import { pxToRem, responsiveFontSizes } from '../utils/getFontValue';
 
 // ----------------------------------------------------------------------
 
-const FONT_PRIMARY = 'Public Sans, sans-serif'; // Google Font
+const FONT_PRIMARY = 'Inter, sans-serif'; // Google Font
 // const FONT_SECONDARY = 'CircularStd, sans-serif'; // Local Font
 
 const typography = {
@@ -31,31 +31,32 @@ const typography = {
   },
   h4: {
     fontWeight: 700,
-    lineHeight: 1.5,
-    fontSize: pxToRem(20),
-    ...responsiveFontSizes({ sm: 20, md: 24, lg: 24 }),
+    lineHeight: 1.3,
+    fontSize: pxToRem(13.5),
+    ...responsiveFontSizes({ sm: 15, md: 15, lg: 15 }),
   },
   h5: {
-    fontWeight: 700,
+    fontWeight: 600,
     lineHeight: 1.5,
-    fontSize: pxToRem(18),
-    ...responsiveFontSizes({ sm: 19, md: 20, lg: 20 }),
+    fontSize: pxToRem(13),
+    ...responsiveFontSizes({ sm: 13, md: 13, lg: 13 }),
   },
   h6: {
     fontWeight: 700,
     lineHeight: 28 / 18,
     fontSize: pxToRem(17),
-    ...responsiveFontSizes({ sm: 18, md: 18, lg: 18 }),
+    ...responsiveFontSizes({ sm: 15, md: 15, lg: 15 }),
   },
   subtitle1: {
-    fontWeight: 600,
+    fontWeight: 400,
     lineHeight: 1.5,
-    fontSize: pxToRem(15),
+    fontSize: pxToRem(13),
   },
   subtitle2: {
     fontWeight: 300,
     lineHeight: 22 / 14,
-    fontSize: pxToRem(14),
+    fontSize: pxToRem(10),
+    ...responsiveFontSizes({ sm: 13, md: 13, lg: 13 }),
   },
   body1: {
     lineHeight: 1.5,

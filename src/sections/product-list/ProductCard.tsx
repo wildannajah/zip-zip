@@ -28,10 +28,9 @@ export default function ProductCard({
 }: ProductProps) {
   const srcImg = '../assets/images/shopee.svg';
   const isMobile = useResponsive('down', 'sm');
-  console.log(link, source);
 
   return (
-    <Grid item xs={6} md={3}>
+    <Grid item xs={6} md={4}>
       <Card
         sx={{
           boxShadow:
@@ -46,16 +45,14 @@ export default function ProductCard({
         />
         <CardContent>
           <Stack spacing={1}>
-            <Typography variant="subtitle1">
-              {`${name.slice(0, 20)}...`}
-            </Typography>
+            <Typography variant="h4">{`${name.slice(0, 20)}...`}</Typography>
             <Stack
               direction="row"
               display="flex"
               justifyContent="space-between"
             >
               <div>
-                <Typography variant="subtitle2" fontSize="13px">
+                <Typography variant="subtitle1" color="grey.400">
                   Jakarta
                 </Typography>
                 <Stack
@@ -84,7 +81,7 @@ export default function ProductCard({
                   direction="row"
                   alignItems="center"
                   fontSize={isMobile ? '10px' : '13px'}
-                  spacing={1}
+                  spacing={0.3}
                 >
                   <Iconify icon="ic:twotone-discount" color="#FE7042" />
                   <Typography
@@ -94,19 +91,14 @@ export default function ProductCard({
                     30%
                   </Typography>
                 </Stack>
-                <Stack direction="row">
-                  {[...Array(4)].map(() => {
-                    const random = Math.random();
-                    console.log(random);
-                    return (
-                      <Iconify
-                        fontSize="13px"
-                        key={Math.random()}
-                        icon="bxs:star"
-                        color="#FFCE31"
-                      />
-                    );
-                  })}
+                <Stack
+                  direction="row"
+                  display="flex"
+                  alignItems="center"
+                  spacing={0.3}
+                >
+                  <Iconify icon="bxs:star" color="#FFCE31" />
+                  <Typography variant="subtitle2">4.3</Typography>
                 </Stack>
               </Stack>
             </Stack>
@@ -116,7 +108,7 @@ export default function ProductCard({
               alignItems="center"
               justifyContent="space-between"
             >
-              <Typography variant="subtitle1" fontSize={isMobile ? '10px' : ''}>
+              <Typography variant="h5" fontSize={isMobile ? '10px' : ''}>
                 {`${Intl.NumberFormat('id-ID', {
                   style: 'currency',
                   currency: 'IDR',
@@ -127,6 +119,7 @@ export default function ProductCard({
                 variant="contained"
                 color="error"
                 sx={{
+                  minWidth: 'max-content',
                   backgroundColor: '#C2224C',
                   color: '#fff',
                   borderRadius: '50px',
@@ -147,7 +140,7 @@ export default function ProductCard({
                       textDecoration: 'none !important',
                     }}
                   >
-                    Lihat Produk
+                    Lihat
                   </Typography>
                 </Link>
               </Button>
