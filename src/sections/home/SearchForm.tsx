@@ -9,6 +9,7 @@ import { FormProvider, RHFTextField } from '../../components/hook-form';
 import Iconify from '../../components/Iconify';
 import useIsMountedRef from '../../hooks/useIsMountedRef';
 import useResponsive from '../../hooks/useResponsive';
+import axios from '../../utils/axios';
 // ----------------------------------------------------------------------
 
 type FormValuesProps = {
@@ -46,11 +47,12 @@ export default function LoginForm() {
 
   const onSubmit = async (data: FormValuesProps) => {
     try {
-      console.log(data);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const response = await axios.post('', {
+        s: data.search,
+      });
       navigate('/products');
     } catch (error: any) {
-      console.error(error);
-
       reset();
 
       if (isMountedRef.current) {
