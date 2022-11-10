@@ -8,6 +8,7 @@ import Footer from '../sections/product-list/Footer';
 import useTable from '../hooks/useTable';
 import Filter from '../sections/product-list/Filter';
 import { useSelector } from '../redux/store';
+import uuidv4 from '../utils/uuidv4';
 
 export default function Product() {
   const { products, isLoading } = useSelector((state) => state.product);
@@ -23,25 +24,23 @@ export default function Product() {
           </Grid>
           <Grid item xs={12} md={9}>
             <Grid container spacing={2}>
-              {!isLoading ? (
-                products
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((product) => {
-                    const [image, price, name, link, source] = product;
-                    return (
-                      <ProductCard
-                        key={link}
-                        image={image}
-                        price={price}
-                        name={name}
-                        link={link}
-                        source={source}
-                      />
-                    );
-                  })
-              ) : (
-                <ProductCardLoader />
-              )}
+              {!isLoading
+                ? products
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map((product) => {
+                      const [image, price, name, link, source] = product;
+                      return (
+                        <ProductCard
+                          key={link}
+                          image={image}
+                          price={price}
+                          name={name}
+                          link={link}
+                          source={source}
+                        />
+                      );
+                    })
+                : [...Array(9)].map(() => <ProductCardLoader key={uuidv4()} />)}
             </Grid>
           </Grid>
         </Grid>
