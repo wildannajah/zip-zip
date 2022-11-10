@@ -3,11 +3,12 @@ import usePagination from '@mui/material/usePagination/usePagination';
 import Iconify from '../Iconify';
 
 interface Props {
+  count: number;
   onChangePage: (page: number) => void;
 }
-export default function Pagination({ onChangePage }: Props) {
+export default function Pagination({ onChangePage, count }: Props) {
   const { items } = usePagination({
-    count: 10,
+    count,
   });
   return (
     <Stack

@@ -3,14 +3,14 @@ import Page from '../components/Page';
 import Navbar from '../sections/product-list/Navbar';
 import ProductCard from '../sections/product-list/ProductCard';
 import ProductCardLoader from '../sections/product-list/ProductCardLoader';
-import response from '../query/response.json';
 import Pagination from '../components/datatable/Pagination';
 import Footer from '../sections/product-list/Footer';
 import useTable from '../hooks/useTable';
 import Filter from '../sections/product-list/Filter';
+import { useSelector } from '../redux/store';
 
 export default function Product() {
-  const { array: products } = response;
+  const { products, isLoading } = useSelector((state) => state.product);
   const { page, rowsPerPage, onChangePage } = useTable();
   return (
     <Page title="Products">
@@ -23,7 +23,7 @@ export default function Product() {
           </Grid>
           <Grid item xs={12} md={9}>
             <Grid container spacing={2}>
-              {products ? (
+              {!isLoading ? (
                 products
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((product) => {
@@ -45,8 +45,13 @@ export default function Product() {
             </Grid>
           </Grid>
         </Grid>
-        {/* </Stack> */}
-        <Pagination onChangePage={onChangePage} />
+        {products.length > 0 && (
+          <Pagination
+            onChangePage={onChangePage}
+            count={products.length / 10}
+          />
+        )}
+
         <br />
       </Container>
       <Footer />
