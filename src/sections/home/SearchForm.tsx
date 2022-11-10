@@ -51,6 +51,7 @@ export default function LoginForm() {
       const response = await axios.post('', {
         s: data.search,
       });
+      console.log(response);
       navigate('/products');
     } catch (error: any) {
       reset();
