@@ -9,6 +9,7 @@ import {
   Typography,
 } from '@mui/material';
 import Iconify from '../../components/Iconify';
+import Image from '../../components/Image';
 import useResponsive from '../../hooks/useResponsive';
 
 interface ProductProps {
@@ -37,15 +38,30 @@ export default function ProductCard({
             '0px 1px 2px rgba(0, 0, 0, 0.05), 0px 0px 0px rgba(0, 0, 0, 0.05);',
         }}
       >
-        <CardMedia
-          component="img"
-          height={isMobile ? '150' : '250'}
-          image={image}
-          alt="green iguana"
-        />
+        <CardMedia>
+          {isMobile ? (
+            <Image
+              src={image}
+              sx={{
+                width: '100%',
+                height: '150px',
+              }}
+            />
+          ) : (
+            <Image
+              src={image}
+              sx={{
+                width: '100%',
+                height: '250px',
+              }}
+            />
+          )}
+        </CardMedia>
         <CardContent>
           <Stack spacing={1}>
-            <Typography variant="h4">{`${name.slice(0, 20)}...`}</Typography>
+            <div title={`${name}`}>
+              <Typography variant="h4">{`${name.slice(0, 20)}...`}</Typography>
+            </div>
             <Stack
               direction="row"
               display="flex"
@@ -61,7 +77,6 @@ export default function ProductCard({
                   sx={{ transform: 'translateX(-5px)' }}
                 >
                   <img src={srcImg} alt="" width="21px" />
-
                   <Typography
                     variant="subtitle2"
                     color="#E74C2D"

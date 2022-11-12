@@ -34,6 +34,7 @@ export default function Image({
   sx,
   ...other
 }: Props) {
+  const srcImg = '../assets/images/shopee.svg';
   if (ratio) {
     return (
       <Box
@@ -61,7 +62,7 @@ export default function Image({
           component={LazyLoadImage}
           wrapperClassName="wrapper"
           effect={disabledEffect ? undefined : effect}
-          placeholderSrc="https://zone-assets-api.vercel.app/assets/img_placeholder.svg"
+          placeholderSrc={srcImg}
           sx={{ width: 1, height: 1, objectFit: 'cover' }}
           {...other}
         />

@@ -1,4 +1,4 @@
-import { Container, Grid } from '@mui/material';
+import { Alert, Container, Grid } from '@mui/material';
 import Page from '../components/Page';
 import Navbar from '../sections/product-list/Navbar';
 import ProductCard from '../sections/product-list/ProductCard';
@@ -11,7 +11,7 @@ import { useSelector } from '../redux/store';
 import uuidv4 from '../utils/uuidv4';
 
 export default function Product() {
-  const { products, isLoading } = useSelector((state) => state.product);
+  const { products, isLoading, error } = useSelector((state) => state.product);
   const { page, rowsPerPage, onChangePage } = useTable();
   return (
     <Page title="Products">
@@ -23,6 +23,11 @@ export default function Product() {
             <Filter />
           </Grid>
           <Grid item xs={12} md={9}>
+            {!!error && (
+              <Alert severity="error" sx={{ marginBottom: '1rem' }}>
+                {error.toString()}
+              </Alert>
+            )}
             <Grid container spacing={2}>
               {!isLoading
                 ? products

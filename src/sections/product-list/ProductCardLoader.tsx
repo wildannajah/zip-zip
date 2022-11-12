@@ -4,7 +4,7 @@ import useResponsive from '../../hooks/useResponsive';
 export default function ProductCardLoader() {
   const isMobile = useResponsive('down', 'sm');
   return (
-    <Grid item xs={6} md={3}>
+    <Grid item xs={6} md={4}>
       <Card>
         <CardMedia>
           <Skeleton
